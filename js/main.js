@@ -26,7 +26,7 @@ function onLoadImage(e)
   var html = "";
   for (var i = 0, total = colorList.length; i < total; i++) {
     var hex = rgbToHex( colorList[i][0], colorList[i][1], colorList[i][2] );
-    var hsl = rgbToHsl( colorList[i][0], colorList[i][1], colorList[i][2] );
+    var hsl = rgbToHsv( colorList[i][0], colorList[i][1], colorList[i][2] );
     html += '<div class="color" style="background-color:'+hex+';">'+hex+'<br><br>'+hsl.join('<br>')+'</div>';
   }
 
@@ -35,10 +35,20 @@ function onLoadImage(e)
 
 function sortColors(a,b) 
 {
-  var hueA = rgbToHsl( a[0], a[1], a[2] )[1];
-  var hueB = rgbToHsl( b[0], b[1], b[2] )[1];
+  // sort by the colorfullness color https://en.wikipedia.org/wiki/Colorfulness
+  // so, calculate the farther distance from the ugliest gray color
+  // ignoring the hue we have hsv = [ any, 0, 0.55 ]
+  // the distance can be squared to save processor
+  // as saturation is more important, the value is multiplied by 2
 
-  return hueA < hueB;
+  var hsvA = rgbToHsv( a[0], a[1], a[2] );
+  var hsvB = rgbToHsv( b[0], b[1], b[2] );
+
+  // value = (saturation_distance * 2)² + (brightness_distance)²
+  var valueA = Math.pow( (hsvA[1]-0)*2 , 2 ) + Math.pow( hsvA[2]-0.55 , 2 );
+  var valueB = Math.pow( (hsvB[1]-0)*2 , 2 ) + Math.pow( hsvB[2]-0.55 , 2 );
+
+  return valueA < valueB;
 }
 
 
