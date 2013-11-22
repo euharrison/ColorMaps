@@ -1,9 +1,6 @@
-GoogleMapsColors
-================
+# GoogleMapsColors
 
-
-# Color palette generator using Google Maps
-
+Color palette generator using Google Maps.
 Experiment for Igo Mayama's project that maps skate spot around the globe
 
 
