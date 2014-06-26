@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
-    <title>Google Maps Colors</title>
+    <title>Color Maps</title>
 
     <style type="text/css">
     
@@ -35,6 +35,7 @@ if (isset($_GET['coords']))
 
 	if ($success) {
 		echo '<br><img src="'.$url.'"><br><br>Imagem salva com sucesso. ['.$coords.']';
+    echo '<ul><li><h2>[ <span>'.$coords.'</span> ]</h2></li></ul>';
 	} else {
 		echo '<br><img src="'.$url.'"><br><br>Erro ao salvar a imagem. ['.$coords.']';
 	}
