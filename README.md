@@ -12,5 +12,5 @@ https://developers.google.com/maps/documentation/imageapis/
 Color Thief to find colors on the image  
 https://github.com/lokesh/color-thief 
 
-Color converter RGB to HSL/HSV
+Color converter RGB to HSL/HSV  
 http://axonflux.com/handy-rgb-to-hsl-and-rgb-to-hsv-color-model-c
