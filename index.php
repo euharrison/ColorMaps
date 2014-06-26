@@ -1,24 +1,21 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <meta charset="utf-8">
     <title>Color Maps</title>
-
-    <style type="text/css">
-    
-    body {
-      margin: 20px;
-      font-family: Arial, sans-serif;
-    }
-
-    </style>
-
+    <link rel="stylesheet" type="text/css" href="style.css">
   </head>
 <body>
 
-
-<form action="saveimage.php" method="get">
-  Coordenadas: <input type="text" name="coords" value="-22.903331,-43.173923">
+<?php
+$coords = "-22.903331,-43.173923";
+if (isset($_GET['coords'])) { 
+  $coords = $_GET['coords'];
+}
+?>
+<form action="" method="get">
+  Coords: 
+  <input type="text" name="coords" style="width:200px;" value="<?php echo $coords; ?>">
   <input type="submit">
 </form>
 
@@ -34,10 +31,10 @@ if (isset($_GET['coords']))
 	$success = copy($url, $img);
 
 	if ($success) {
-		echo '<br><img src="'.$url.'"><br><br>Imagem salva com sucesso. ['.$coords.']';
+		echo '<br><img src="'.$url.'"><br><br>Image saved [ '.$coords.' ]';
     echo '<ul><li><h2>[ <span>'.$coords.'</span> ]</h2></li></ul>';
 	} else {
-		echo '<br><img src="'.$url.'"><br><br>Erro ao salvar a imagem. ['.$coords.']';
+		echo '<br><img src="'.$url.'"><br><br>Image error ['.$coords.']';
 	}
 }
 
